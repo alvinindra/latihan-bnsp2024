@@ -74,7 +74,7 @@ $harga_jual  = isset($_GET['harga']) ? $_GET['harga'] : '';
           const barang = "<?= htmlspecialchars($nama_barang) ?>";
           const bayar = document.querySelector('[name="cara_bayar"]').value;
           const kirim = document.querySelector('[name="cara_kirim"]').value;
-          const penjual_wa = "+6282261960116"; // WA penjual
+          const penjual_wa = "+628174980170"; // WA penjual
 
           let pesan = `Halo, saya ingin order:\nBarang: ${barang}\nJumlah: ${jumlah}\nNama: ${nama}\nNo. WA: ${wa}\nCara Bayar: ${bayar}\nPengiriman: ${kirim}`;
           let url = `https://wa.me/${penjual_wa}?text=${encodeURIComponent(pesan)}`;
