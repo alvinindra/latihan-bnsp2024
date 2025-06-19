@@ -18,12 +18,14 @@ $kode_barang     = isset($_POST['kode_barang']) ? $_POST['kode_barang'] : '';
 $nama_konsumen    = isset($_POST['nama_konsumen']) ? $_POST['nama_konsumen'] : '';
 $jumlah          = isset($_POST['jumlah_pesanan']) ? (int)$_POST['jumlah_pesanan'] : 0;
 $nomor_whatsapp  = isset($_POST['nomor_whatsapp']) ? $_POST['nomor_whatsapp'] : '';
+$cara_bayar      = isset($_POST['cara_bayar']) ? $_POST['cara_bayar'] : '';
+$cara_kirim      = isset($_POST['cara_kirim']) ? $_POST['cara_kirim'] : '';
 
-if ($kode_barang && $nama_konsumen && $jumlah > 0 && $nomor_whatsapp) {
-  $sql = "INSERT INTO t_order (tgl_order, kode_barang, nama_konsumen, jumlah_pesanan, nomor_whatsapp)
-            VALUES (NOW(), ?, ?, ?, ?)";
+if ($kode_barang && $nama_konsumen && $jumlah > 0 && $nomor_whatsapp && $cara_bayar && $cara_kirim) {
+  $sql = "INSERT INTO t_order (tgl_order, kode_barang, nama_konsumen, jumlah_pesanan, nomor_whatsapp, cara_bayar, cara_kirim)
+            VALUES (NOW(), ?, ?, ?, ?, ?, ?)";
   $stmt = mysqli_prepare($conn, $sql);
-  mysqli_stmt_bind_param($stmt, "ssis", $kode_barang, $nama_konsumen, $jumlah, $nomor_whatsapp);
+  mysqli_stmt_bind_param($stmt, "ssisss", $kode_barang, $nama_konsumen, $jumlah, $nomor_whatsapp, $cara_bayar, $cara_kirim);
 
   if (mysqli_stmt_execute($stmt)) {
     // Kurangi stok barang
